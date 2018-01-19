@@ -2,8 +2,12 @@
 
 1. Introduction
 
+    * How it looks
+    * Like arrays
     * Like promises
-    * streams
+    * Like functions (run when subscribe)
+    * Streams (messages, events, time)
+    * Operators
 
 2. Autosave
 
@@ -11,4 +15,10 @@
     * debounceTime() and distinctUntilChanged()
     * combineLatest() startWith()
 
-3. Redux Observable
+3. Drag and drop
+
+4. Redux Observable
+
+    * Ajax
+    * Errors
+    * Cancelation
