@@ -4,9 +4,6 @@ const statusEl = document.getElementById('status');
 const value$ = Rx.Observable.fromEvent(inputEl, 'keyup').map(event => event.target.value);
 const startSave$ = value$.debounceTime(1000).distinctUntilChanged();
 
-var pauser$ = new Rx.Subject();
-console.log();
-
 const saveRequest$ = startSave$.switchMap(data =>
     Rx.Observable.timer(1000)
         .mapTo(data)
