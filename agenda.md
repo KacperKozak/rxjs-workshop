@@ -11,6 +11,7 @@
 
 1. Drag and drop
 
+    * Input mouse move/up/down stream with subscribe
     * Only mousemove
     * Add mouse up/down with switchMap() and takeUntil()
     * Chellange
