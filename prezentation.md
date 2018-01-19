@@ -10,13 +10,13 @@
 ## Like promises
 
 ```js
-const stream$ = Rx.Observable.of('Hello');
+const myPromise = Promise.resolve('Hello');
+myPromise.then(value => …); // Hello
 
+const stream$ = Rx.Observable.of('Hello');
 stream$.subscribe(value => …); // Hello
 
-const promise = Promise.resolve('Hello');
-
-promise.then(value => …); // Hello
+const fromPromise$ = Rx.Observable.fromPromise(myPromise);
 ```
 
 ## Like functions
