@@ -44,13 +44,17 @@ stream$
     .map(a => a * 3)
     .filter(a => a % 2 === 0)
     .subscribe(value => …); // executed twice with 6 and 12
-
 ```
 
-## Streams
+## Event stream
 
 ```js
 const stream$ = Rx.Observable.interval(1000);
 
 stream$.subscribe(value => …); // 0 (1s) 1 (1s) 2 …
+
+
+const clicks$ = Rx.Observable.fromEvent(document, 'click');
+
+clicks$.subscribe(value => …); // MouseEvent(…), MouseEvent(…)…
 ```
