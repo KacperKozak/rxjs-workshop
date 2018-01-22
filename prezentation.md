@@ -1,48 +1,56 @@
 # Introduction
 
-## Like arrays
+## Like functions
 
-```
-[1,2,3,4,5]
---1---2-3---4--5-->
+```js
+const somefn = () => 'Hello';
+
+somefn(); // Hello
+somefn(); // Hello
+
+const stream$ = Rx.Observable.of('Hello');
+
+stream$.subscribe(value => …); // Hello
+stream$.subscribe(value => …); // Hello
 ```
 
 ## Like promises
 
 ```js
-const myPromise = Promise.resolve('Hello');
+const myPromise = new Promise(resolve => {
+    setTimeout(() => { resolve('Hello') }, 1000)
+});
 myPromise.then(value => …); // Hello
 
-const stream$ = Rx.Observable.of('Hello');
+const stream$ = Rx.Observable.of('Hello').delay(1000);
 stream$.subscribe(value => …); // Hello
 
 const fromPromise$ = Rx.Observable.fromPromise(myPromise);
 ```
 
-## Like functions
+## Like arrays
 
 ```js
-const stream$ = Rx.Observable.of('Hello');
+const values = [1,2,3,4,5];
 
-stream$.subscribe(value => …); // Hello
+values
+    .map(a => a * 3)
+    .filter(a => a % 2 === 0) // [6, 12]
 
-setTimeout(() => {
-    stream$.subscribe(value => …); // Hello
-}, 1000);
+
+const stream$ = Rx.Observable.from([1,2,3,4,5]);
+
+stream$
+    .map(a => a * 3)
+    .filter(a => a % 2 === 0)
+    .subscribe(value => …); // executed twice with 6 and 12
+
 ```
 
 ## Streams
 
 ```js
 const stream$ = Rx.Observable.interval(1000);
-
-stream$.subscribe(value => …); // 0 (1s) 1 (1s) 2 …
-```
-
-```js
-const stream$ = Rx.Observable.interval(1000)
-    .map(n => n * 5)
-    .filter(n => Math.sin(n) >= 0);
 
 stream$.subscribe(value => …); // 0 (1s) 1 (1s) 2 …
 ```
