@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from './appActions';
 
 class App extends Component {
+    handleSearch = event => {
+        this.props.search(event.target.value);
+    };
     render() {
+        const { list, query } = this.props;
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+            <div className="app">
+                <input type="search" value={query} onChange={this.handleSearch} />
+                <ul className="results">
+                    {list.map(item => <li key={item}>{item}</li>)}
+                </ul>
             </div>
         );
     }
 }
 
-export default App;
+export default connect(state => state, actions)(App);
