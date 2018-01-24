@@ -10,7 +10,9 @@ const pingEpic = action$ =>
         .switchMap(action =>
             Rx.Observable.ajax(
                 'https://api.punkapi.com/v2/beers?beer_name=' + action.payload,
-            ).map(({ response }) => results(response)),
+            )
+                .map(({ response }) => results(response))
+                .takeUntil(action$.ofType('SEARCH')),
         );
 
 export default combineEpics(pingEpic);
