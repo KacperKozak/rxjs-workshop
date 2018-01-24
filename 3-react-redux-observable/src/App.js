@@ -10,7 +10,14 @@ class App extends Component {
         const { list, query } = this.props;
         return (
             <div className="app">
-                <input type="search" value={query} onChange={this.handleSearch} />
+                <div className="search">
+                    <input
+                        type="search"
+                        value={query}
+                        onChange={this.handleSearch}
+                        placeholder="Search…"
+                    />
+                </div>
                 <ul className="results">
                     {list.map(item => (
                         <li key={item.id} className="results-item">

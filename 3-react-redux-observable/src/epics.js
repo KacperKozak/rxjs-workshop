@@ -6,6 +6,7 @@ const pingEpic = action$ =>
     action$
         .ofType('SEARCH')
         .filter(action => action.payload !== '')
+        .debounceTime(1000)
         .switchMap(action =>
             Rx.Observable.ajax(
                 'https://api.punkapi.com/v2/beers?beer_name=' + action.payload,
