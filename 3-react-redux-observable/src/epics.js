@@ -2,7 +2,7 @@ import { combineEpics } from 'redux-observable';
 import Rx from 'rxjs';
 import { results } from './appActions';
 
-const pingEpic = action$ =>
+const searchEpic = action$ =>
     action$
         .ofType('SEARCH')
         .filter(action => action.payload !== '')
@@ -15,4 +15,4 @@ const pingEpic = action$ =>
                 .takeUntil(action$.ofType('SEARCH')),
         );
 
-export default combineEpics(pingEpic);
+export default combineEpics(searchEpic);

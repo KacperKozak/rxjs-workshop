@@ -19,14 +19,15 @@ class App extends Component {
                     />
                 </div>
                 <ul className="results">
-                    {list.map(item => (
-                        <li key={item.id} className="results-item">
-                            <img src={item.image_url} alt="" />
-                            <strong>{item.name}</strong>
-                            <br />
-                            <span>IBU: {item.ibu}</span>
-                        </li>
-                    ))}
+                    {query &&
+                        list.map(item => (
+                            <li key={item.id} className="results-item">
+                                <img src={item.image_url} alt="" />
+                                <strong>{item.name}</strong>
+                                <br />
+                                <span>IBU: {item.ibu}</span>
+                            </li>
+                        ))}
                 </ul>
             </div>
         );
