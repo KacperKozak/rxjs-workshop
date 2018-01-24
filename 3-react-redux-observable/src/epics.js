@@ -1,0 +1,15 @@
+import { combineEpics } from 'redux-observable';
+import Rx from 'rxjs';
+import { results } from './appActions';
+
+const pingEpic = action$ =>
+    action$
+        .ofType('SEARCH')
+        .filter(action => action.payload !== '')
+        .switchMap(action =>
+            Rx.Observable.ajax(
+                'https://api.punkapi.com/v2/beers?beer_name=' + action.payload,
+            ).map(({ response }) => results(response)),
+        );
+
+export default combineEpics(pingEpic);

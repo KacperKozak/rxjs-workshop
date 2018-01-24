@@ -12,7 +12,14 @@ class App extends Component {
             <div className="app">
                 <input type="search" value={query} onChange={this.handleSearch} />
                 <ul className="results">
-                    {list.map(item => <li key={item}>{item}</li>)}
+                    {list.map(item => (
+                        <li key={item.id} className="results-item">
+                            <img src={item.image_url} alt="" />
+                            <strong>{item.name}</strong>
+                            <br />
+                            <span>IBU: {item.ibu}</span>
+                        </li>
+                    ))}
                 </ul>
             </div>
         );
