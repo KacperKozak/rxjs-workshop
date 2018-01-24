@@ -14,5 +14,6 @@ const searchEpic = action$ =>
                 .map(({ response }) => results(response))
                 .takeUntil(action$.ofType('SEARCH')),
         );
+// .ignoreElements();
 
 export default combineEpics(searchEpic);
