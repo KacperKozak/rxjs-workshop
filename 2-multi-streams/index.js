@@ -19,18 +19,14 @@ const height$ = Rx.Observable.fromEvent(heightEl, 'input')
     .map(event => event.target.value)
     .startWith(heightEl.value);
 
-const size$ = scale$.combineLatest(width$, height$).map(([scale, width, height]) => {
-    console.log({ width, height, scale });
-    return {
-        width: width * scale,
-        height: height * scale,
-    };
-});
+const size$ = scale$.combineLatest(width$, height$).map(([scale, width, height]) => ({
+    width: width * scale,
+    height: height * scale,
+}));
 
 Rx.Observable.combineLatest(color$, scale$, size$)
     .map(([color, scale, size]) => ({ color, scale, ...size }))
     .subscribe(data => {
-        console.log('scale', data.scale);
         outputEl.style.width = data.width + 'px';
         outputEl.style.height = data.height + 'px';
         outputEl.style.backgroundColor = data.color;
