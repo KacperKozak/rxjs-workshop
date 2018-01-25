@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxJS</title>
+    <style>
+    body {
+        padding: 20px;
+        font-family: sans-serif;
+        background: #252b36;
+    }
+    .controls {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #FFF;
+        box-shadow: 2px 2px 20px rgba(0,0,0,.7);
+        padding: 20px;
+        border-radius: 0 0 4px;
+    }
+    .controls p {
+        display: grid;
+        grid-template-columns: 55px 200px;
+    }
+    #output {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #EEE;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border-radius: 4px;
+    }
+
+    input[type=range]{
+        -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        height: 20px;
+        background: #ddd;
+        border: none;
+        border-radius: 3px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 20px;
+        width: 20px;
+        border-radius: 3px;
+        background: #333;
+    }
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #ccc;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <p>
+            <span>Color:</span>
+            <input id="color" type="color" value="#059174">
+        </p>
+        <p>
+            <span>Scale:</span>
+            <input id="scale" type="range" min="0" max="2" step="0.01" value="1">
+        </p>
+        <p>
+            <span>Width:</span>
+            <input id="width" type="range" min="10" max="500" value="100">
+        </p>
+        <p>
+            <span>Height:</span>
+            <input id="height" type="range" min="10" max="500" value="100">
+        </p>
+    </div>
+    <div id="output"></div>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.5.6/dist/global/Rx.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
