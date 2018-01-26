@@ -24,8 +24,8 @@ const size$ = scale$.combineLatest(width$, height$).map(([scale, width, height])
     height: height * scale,
 }));
 
-Rx.Observable.combineLatest(color$, scale$, size$)
-    .map(([color, scale, size]) => ({ color, scale, ...size }))
+Rx.Observable.combineLatest(color$, size$)
+    .map(([color, size]) => ({ color, ...size }))
     .subscribe(data => {
         outputEl.style.width = data.width + 'px';
         outputEl.style.height = data.height + 'px';
