@@ -1,12 +1,19 @@
 const circleEl = document.getElementById('circle');
 const circle2El = document.getElementById('circle2');
 
+// Get the three major events
+const mousedown$ = Rx.Observable.fromEvent(circleEl, 'mousedown');
 const mousemove$ = Rx.Observable.fromEvent(document, 'mousemove');
+const mouseup$ = Rx.Observable.fromEvent(document, 'mouseup');
 
-const mousedrag$ = mousemove$.map(mm => ({
-    left: mm.clientX,
-    top: mm.clientY,
-}));
+const mousedrag$ = mousedown$.switchMap(md =>
+    mousemove$
+        .map(mm => ({
+            left: mm.clientX,
+            top: mm.clientY,
+        }))
+        .takeUntil(mouseup$),
+);
 
 mousedrag$.subscribe(pos => {
     circleEl.style.top = pos.top + 'px';
