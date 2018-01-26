@@ -16,6 +16,6 @@ const searchEpic = action$ =>
                 .startWith(loading(true)),
         );
 
-const isLoading = action$ => action$.ofType('RESULTS').mapTo(loading(false));
+const loadingEndEpic = action$ => action$.ofType('RESULTS').mapTo(loading(false));
 
-export default combineEpics(searchEpic, isLoading);
+export default combineEpics(searchEpic, loadingEndEpic);
