@@ -17,14 +17,13 @@
     * Chellange
     * Test delay() after and before takeUntil()
 
-1. Autosave
+1. Multi streams
 
-    * Input keyup stream with subscribe
-    * debounceTime() and distinctUntilChanged()
-    * combineLatest() startWith()
+    * Input stream
+    * combineLatest() and startWith()
 
 1. Redux Observable
 
     * Ajax
     * Errors
-    * Cancelation
+    * Cancelation takeUntil()
