@@ -7,7 +7,7 @@ class App extends Component {
         this.props.search(event.target.value);
     };
     render() {
-        const { list, query } = this.props;
+        const { list, query, isLoading } = this.props;
         return (
             <div className="app">
                 <div className="search">
@@ -18,6 +18,13 @@ class App extends Component {
                         placeholder="Search…"
                     />
                 </div>
+                {isLoading && (
+                    <img
+                        src="https://icongr.am/material/loading.svg?color=ffffff&size=50"
+                        className="loading"
+                        alt=""
+                    />
+                )}
                 <ul className="results">
                     {query &&
                         list.map(item => (

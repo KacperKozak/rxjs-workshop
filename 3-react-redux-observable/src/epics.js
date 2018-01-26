@@ -1,6 +1,6 @@
 import { combineEpics } from 'redux-observable';
 import Rx from 'rxjs';
-import { results } from './appActions';
+import { results, loading } from './appActions';
 
 const URL = 'https://api.punkapi.com/v2/beers?beer_name=';
 
@@ -12,8 +12,10 @@ const searchEpic = action$ =>
         .switchMap(action =>
             Rx.Observable.ajax(URL + action.payload)
                 .map(({ response }) => results(response))
-                .takeUntil(action$.ofType('SEARCH')),
+                .takeUntil(action$.ofType('SEARCH'))
+                .startWith(loading(true)),
         );
-// .ignoreElements();
 
-export default combineEpics(searchEpic);
+const isLoading = action$ => action$.ofType('RESULTS').mapTo(loading(false));
+
+export default combineEpics(searchEpic, isLoading);
