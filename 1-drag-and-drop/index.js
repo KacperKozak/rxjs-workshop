@@ -24,6 +24,6 @@ mousedrag$
     .delay(100)
     .map(pos => ({ left: pos.left + 50, top: pos.top }))
     .subscribe(function(pos) {
-        circle2.style.top = pos.top + 'px';
-        circle2.style.left = pos.left + 'px';
+        circle2El.style.top = pos.top + 'px';
+        circle2El.style.left = pos.left + 'px';
     });
